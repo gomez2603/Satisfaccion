@@ -1,0 +1,64 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/cstyles.css' %}">
+    <title>Document</title>
+</head>
+<style>
+  .footer{
+  background-image: url("{% static 'Img/FondoCyh.png' %}");
+  }
+  .navbar{
+  background-image: url("{% static 'Img/FondoCyhv.png' %}");
+  }
+</style>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-light">
+
+      <div class="col-6">
+       <img class="logo" src="{% static 'Img/logonav.png' %}">     <a><b>Bienvenido {{user.first_name}} {{user.last_name}}</b></a>
+      </div>
+         {% if user.is_staff %}
+
+       <a  href="{% url 'chart' %}">Estadisticas</a>
+      {% endif %}
+        <div class="col-2">
+          <a  href="{% url 'logout' %}">Salir</a>
+        </div>
+
+       
+
+</nav>
+    <h1 class="text-center mx-auto exitoso">Gracias por Responder la encuesta</h1>
+
+ <div class="row">
+<div class="col-12">
+  <br>
+     <p class="text-center">
+       Gracias por tus comentarios.
+         <br>
+         Agradecemos sinceramente su opinión honesta y tomaremos su entrada en consideración al tiempo de proporcionar servicios en el futuro.
+<br>
+     Si tiene algún comentario o inquietud acerca de esta encuesta por favor, póngase en contacto con:
+ <br>
+   <a href="mailto:ventasinternas@grupocyh.com">ventasinternas@grupocyh.com</a>
+
+     </p>
+    <br>
+
+    </div>
+  </div>
+    <div class="col-12 m-auto text-center footer">
+
+    </div>
+
+</div>
+
+</body>
+</html>

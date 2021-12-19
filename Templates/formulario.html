@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Encuesta de Satisfacción Staffing Global</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/cstyles.css' %}">
+</head>
+<style>
+  .footer{
+  background-image: url("{% static 'Img/FondoCyh.png' %}");
+  }
+  .navbar{
+  background-image: url("{% static 'Img/FondoCyhv.png' %}");
+  }
+</style>
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-light">
+
+      <div class="col-6">
+        <img class="logo" src="{% static 'Img/logonav.png' %}">   <a><b>Bienvenido{{user.first_name}} {{user.last_name}}</b></a>
+      </div>
+      {% if user.is_staff %}
+
+       <a  href="{% url 'chart' %}">Estadisticas</a>
+      {% endif %}
+        <div class="col-2">
+          <a  href="{% url 'logout' %}">Salir</a>
+        </div>
+
+</nav>
+{% if not user.is_answered %}
+  <form class="form-group" action="/response/" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <p class="h2 text-center w-100  px-2 col-12">
+       Las siguientes preguntas se refieren a su experiencia en cuanto al servicio al cliente. Por favor indique si está de acuerdo o en desacuerdo con las siguientes afirmaciones, considerando lo siguiente:
+    </p>
+    </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+  <label >
+      <b> 1. Su experiencia con respecto al servicio al cliente recibido por Staffing Global SA de CV resultó satisfactorio</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input id="txtAsunto"  required class="form-check-input" type="radio" name="p1" id="Servicio1A" value="A">
+  <label class="form-check-label" for="Servicio1A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p1" id="Servicio1B" value="B">
+  <label class="form-check-label" for="Servicio1B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p1" id="Servicio1C" value="C">
+  <label class="form-check-label" for="Servicio1C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p1" id="Servicio1D" value="D">
+  <label class="form-check-label" for="Servicio1D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p1" id="Servicio1E" value="E">
+  <label class="form-check-label" for="Servicio1E">
+    Muy en desacuerdo
+  </label>
+    </div>
+      </div>
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+  <label >
+    <b>2. La atención y resolución de sus preocupaciones fue eficiente.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p2" id="Servicio2A" value="A">
+  <label class="form-check-label" for="Servicio2A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p2" id="Servicio2B" value="B">
+  <label class="form-check-label" for="Servicio2B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p2" id="Servicio2C" value="C">
+  <label class="form-check-label" for="Servicio2C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p2" id="Servicio2D" value="D">
+  <label class="form-check-label" for="Servicio2D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p2" id="Servicio2E" value="E">
+  <label class="form-check-label" for="Servicio2E">
+    Muy en desacuerdo
+  </label>
+    </div>
+ </div>
+
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+<label >
+   <b>3. Las características y beneficios del servicio le dejan satisfecho.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p3" id="Servicio3A" value="A">
+  <label class="form-check-label" for="Servicio3A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p3" id="Servicio3B" value="B">
+  <label class="form-check-label" for="Servicio3B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p3" id="Servicio3C" value="C">
+  <label class="form-check-label" for="Servicio3C">
+   Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p3" id="Servicio3D" value="D">
+  <label class="form-check-label" for="Servicio3D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p3" id="Servicio3E" value="E">
+  <label class="form-check-label" for="Servicio3E">
+    Muy en desacuerdo
+  </label>
+    </div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+  <label >
+   <b> 4. Los requisitos del servicio son suficientes para la actividad operativa.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p4" id="Servicio4A" value="A">
+  <label class="form-check-label" for="Servicio4A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p4" id="Servicio4B" value="B">
+  <label class="form-check-label" for="Servicio4B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p4" id="Servicio4C" value="C">
+  <label class="form-check-label" for="Servicio4C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p4" id="Servicio4D" value="D">
+  <label class="form-check-label" for="Servicio4D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p4" id="Servicio4E" value="E">
+  <label class="form-check-label" for="Servicio4E">
+    Muy en desacuerdo
+  </label>
+    </div>
+       </div>
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+<label >
+  <b> 5. El servicio de Tecnologías de la Información (TI) es satisfactorio.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p5" id="Servicio5A" value="A">
+  <label class="form-check-label" for="Servicio5A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p5" id="Servicio5B" value="B">
+  <label class="form-check-label" for="Servicio5B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p5" id="Servicio5C" value="C">
+  <label class="form-check-label" for="Servicio5C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p5" id="Servicio5D" value="D">
+  <label class="form-check-label" for="Servicio5D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p5" id="Servicio5E" value="E">
+  <label class="form-check-label" for="Servicio5E">
+    Muy en desacuerdo
+  </label>
+    </div>
+       </div>
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+<label >
+   <b> 6. El Sistema de Gestión de Calidad cumple con su propósito. </b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p6" id="Servicio6A" value="A">
+  <label class="form-check-label" for="Servicio6A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p6" id="Servicio6B" value="B">
+  <label class="form-check-label" for="Servicio6B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p6" id="Servicio6C" value="C">
+  <label class="form-check-label" for="Servicio6C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p6" id="Servicio6D" value="D">
+  <label class="form-check-label" for="Servicio6D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p6" id="Servicio6E" value="E">
+  <label class="form-check-label" for="Servicio6E">
+    Muy en desacuerdo
+  </label>
+    </div>
+       </div>
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+  <label>
+         <b>7. Si no está satisfecho con el producto, haga el favor de describir por qué. </b>
+</label>
+        <textarea rows="4" cols="50" class="form-control" name="ob1" required ></textarea>
+      </div>
+</div>
+
+
+
+ <div class="row">
+    <p class="h2 text-center w-100  px-2 col-12">
+Las siguientes preguntas se refieren al representante de servicio al cliente con la que habló recientemente. Por favor indique si está de acuerdo o en desacuerdo con las siguientes afirmaciones, considerando lo siguiente:    </p>
+    </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+  <label >
+      <b> 8.El representante de servicio fue cortés.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p7" id="Servicio8A" value="A">
+  <label class="form-check-label" for="Servicio8A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p7" id="Servicio8B" value="B">
+  <label class="form-check-label" for="Servicio8B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p7" id="Servicio8C" value="C">
+  <label class="form-check-label" for="Servicio8C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p7" id="Servicio8D" value="D">
+  <label class="form-check-label" for="Servicio8D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p7" id="Servicio8E" value="E">
+  <label class="form-check-label" for="Servicio8E">
+    Muy en desacuerdo
+  </label>
+    </div>
+      </div>
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+  <label >
+    <b> 9.El tiempo de respuesta del representante de servicio al cliente es oportuna.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p8" id="Servicio9A" value="A">
+  <label class="form-check-label" for="Servicio9A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p8" id="Servicio9B" value="B">
+  <label class="form-check-label" for="Servicio9B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p8" id="Servicio9C" value="C">
+  <label class="form-check-label" for="Servicio9C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p8" id="Servicio9D" value="D">
+  <label class="form-check-label" for="Servicio9D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p8" id="Servicio9E" value="E">
+  <label class="form-check-label" for="Servicio9E">
+    Muy en desacuerdo
+  </label>
+    </div>
+ </div>
+
+<div class="col-12 col-sm-6 col-md-4 col-xl-3">
+<label >
+   <b>10.Los registros compartidos por el representante de servicio son claros y suficientes.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p9" id="Servicio10A" value="A">
+  <label class="form-check-label" for="Servicio10A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p9" id="Servicio10B" value="B">
+  <label class="form-check-label" for="Servicio10B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p9" id="Servicio10C" value="C">
+  <label class="form-check-label" for="Servicio10C">
+   Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p9" id="Servicio10D" value="D">
+  <label class="form-check-label" for="Servicio3D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p9" id="Servicio10E" value="E">
+  <label class="form-check-label" for="Servicio10E">
+    Muy en desacuerdo
+  </label>
+    </div>
+</div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+  <label >
+   <b> 11.El representante de servicio al cliente estaba bien informado.</b>
+  </label>
+  <br>
+  <div class="form-check">
+  <input class="form-check-input" required type="radio" name="p10" id="Servicio11A" value="A">
+  <label class="form-check-label" for="Servicio11A">
+    Totalmente de acuerdo
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p10" id="Servicio11B" value="B">
+  <label class="form-check-label" for="Servicio11B">
+    De acuerdo
+  </label>
+    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="p10" id="Servicio11C" value="C">
+  <label class="form-check-label" for="Servicio11C">
+    Neutral
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p10" id="Servicio11D" value="D">
+  <label class="form-check-label" for="Servicio11D">
+    Discrepar
+  </label>
+    </div>
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="p10" id="Servicio11E" value="E">
+  <label class="form-check-label" for="Servicio11E">
+    Muy en desacuerdo
+  </label>
+    </div>
+       </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+        <label>
+         <b>12. ¿Hay algún otro comentario sobre el representante de servicio al cliente que le gustaría añadir? </b>
+      </label>
+        <textarea rows="4" cols="50" required class="form-control" name="ob2"></textarea>
+      </div>
+</div>
+ <div class="col-12 m-auto text-center footer">
+    <button class="btn btns-primary" href="{% url 'logout' %}" type="submit">Enviar</button>
+    </div>
+
+  </form>
+  {% endif %}
+
+  {% if user.is_answered %}
+  <h1 style="text-align:center;color:#660033;">Gracias por Contestar la encuesta</h1>
+  {% endif %}
+</div>
+</body>
+</html>

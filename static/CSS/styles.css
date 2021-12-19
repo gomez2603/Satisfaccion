@@ -1,0 +1,58 @@
+::-webkit-scrollbar {
+    display: none;
+}
+.container-fluid{
+
+height:100vh;
+
+box-sizing:inherit
+}
+
+#formulario{
+padding-top:4rem
+}
+.container{
+
+
+margin:auto;
+}
+.row{
+
+}
+input{
+  border: 3px solid #000
+}
+button{
+display:block;
+margin:auto;
+}
+
+form{
+
+
+}
+
+.btnstyle{
+border: 3px solid #000 !important
+}
+
+.logo{
+max-width: 100%;
+max-height: 70px;
+}
+
+.footer{
+height: 112px;}
+.navbar{
+height: 112px;}
+
+.welcome{
+color:#660033;
+display:block
+}
+
+
+p{
+font-size:1.5rem;
+color:#660033;
+}
